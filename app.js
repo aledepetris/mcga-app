@@ -1,6 +1,9 @@
 var express = require('express')
+const bodyParser = require('body-parser');
 var app = express()
 var port = 3000
+
+app.use(bodyParser.json());
 
 var productosController = require('./controller/productosController');
 var clientesController = require('./controller/clientesController');
@@ -15,10 +18,10 @@ app.delete('/productos/:id', productosController.eliminarProducto);
 
 // CLIENTES
 app.get('/clientes', clientesController.listarClientes);
-app.post('/clientes', clientesController.crearCliente);
+app.post('/agregarCliente', clientesController.crearCliente);
 app.get('/clientes/:id', clientesController.obtenerClientePorId);
-app.put('/clientes/:id', clientesController.actualizarCliente);
-app.delete('/clientes/:id', clientesController.eliminarCliente);
+app.put('/modificarCliente', clientesController.actualizarCliente);
+app.delete('/eliminarCliente', clientesController.eliminarCliente);
 
 // VENTAS
 app.get('/ventas', ventasController.listarVentas);
