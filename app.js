@@ -2,51 +2,27 @@ var express = require('express')
 var app = express()
 var port = 3000
 
-var productos = require('./data/productos.json');
-var clientes = require('./data/clientes.json');
-var ventas = require('./data/ventas.json');
-
+var productosController = require('./controller/productosController');
+var clientesController = require('./controller/clientesController');
+var ventasController = require('./controller/ventasController');
 
 // PRODUCTOS
-app.get('/productos', (req, res) => {
-  res.json(productos);
-});
+app.get('/productos', productosController.listarProductos);
+app.post('/productos', productosController.crearProducto);
+app.get('/productos/:id', productosController.obtenerProductoPorId);
+app.put('/productos/:id', productosController.actualizarProducto);
+app.delete('/productos/:id', productosController.eliminarProducto);
 
-app.post('/productos', (req, res) => {
-});
-
-app.get('/productos/:id', (req, res) => {
-});
-
-app.put('/productos/:id', (req, res) => {
-});
-
-app.delete('/productos/:id', (req, res) => {
-});
-
-
-// Clientes
-app.get('/clientes', (req, res) => {
-  res.json(clientes);
-});
-
-app.post('/clientes', (req, res) => {
-});
-
-app.get('/clientes/:id', (req, res) => {
-});
-
-app.put('/clientes/:id', (req, res) => {
-});
-
-app.delete('/clientes/:id', (req, res) => {
-});
+// CLIENTES
+app.get('/clientes', clientesController.listarClientes);
+app.post('/clientes', clientesController.crearCliente);
+app.get('/clientes/:id', clientesController.obtenerClientePorId);
+app.put('/clientes/:id', clientesController.actualizarCliente);
+app.delete('/clientes/:id', clientesController.eliminarCliente);
 
 // VENTAS
-app.get('/ventas', (req, res) => {
-  res.json(ventas);
-});
+app.get('/ventas', ventasController.listarVentas);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 })
