@@ -19,15 +19,15 @@ module.exports = {
       },
 
       crearProducto: function (req, res) { 
-        const { nombre, stock, precio } = req.body;
+        var { nombre, stock, precio } = req.body;
       
       if (!nombre || !stock || !precio) {
         return res.status(400).json({ error: 'Error al crear un nuevo producto: campos incompletos' });
       }
       
-      const nuevoProductoId = productos.length + 1;
+      var nuevoProductoId = productos.length + 1;
       
-      const nuevoProducto = {
+      var nuevoProducto = {
         id: nuevoProductoId,
         nombre,
         stock,
@@ -39,14 +39,15 @@ module.exports = {
       },
 
       actualizarProducto: function (req, res) { 
-        const { id, nombre, stock, precio } = req.body;
+        var { nombre, stock, precio } = req.body;
+        var id = req.params.id; 
       
       if (!id || !nombre || !stock || !precio) {
         return res.status(400).json({ error: 'Error al modificar producto: campos incompletos' });
       }
 
       var modificado = false;
-      for (let index = 0; index < productos.length; index++) {
+      for (var index = 0; index < productos.length; index++) {
         if(productos[index].id == id){              
           if(productos[index].nombre == nombre && productos[index].stock == stock && productos[index].precio == precio){
             return res.status(400).json({ error: 'Error al modificar producto: los valores son iguales' });
@@ -66,7 +67,7 @@ module.exports = {
       },
 
       eliminarProducto: function (req, res) { 
-        const { id } = req.body;        
+        var id = req.params.id;        
 
       if (!id) {
         return res.status(400).json({ error: 'Error al eliminar producto: no se encuentra el ID' });
@@ -74,7 +75,7 @@ module.exports = {
               
       var productoAEliminarIndex = 0;  
 
-      for (let index = 0; index < productos.length; index++) {
+      for (var index = 0; index < productos.length; index++) {
         if(productos[index].id == id){              
           productoAEliminarIndex = index;             
           break;                
