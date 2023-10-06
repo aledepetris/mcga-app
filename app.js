@@ -11,10 +11,10 @@ var ventasController = require('./controller/ventasController');
 
 // PRODUCTOS
 app.get('/productos', productosController.listarProductos);
-app.post('/productos', productosController.crearProducto);
+app.post('/agregarProducto', productosController.crearProducto);
 app.get('/productos/:id', productosController.obtenerProductoPorId);
-app.put('/productos/:id', productosController.actualizarProducto);
-app.delete('/productos/:id', productosController.eliminarProducto);
+app.put('/modificarProducto', productosController.actualizarProducto);
+app.delete('/eliminarProducto', productosController.eliminarProducto);
 
 // CLIENTES
 app.get('/clientes', clientesController.listarClientes);

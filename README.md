@@ -5,7 +5,7 @@ app practica-tp node express
 npm init
 
 ## Instalar express
-npm express
+npm i express
 
 ## correr la app
 $ node app.js
