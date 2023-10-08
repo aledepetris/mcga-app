@@ -18,10 +18,10 @@ app.delete('/productos/:id', productosController.eliminarProducto);
 
 // CLIENTES
 app.get('/clientes', clientesController.listarClientes);
-app.post('/agregarCliente', clientesController.crearCliente);
+app.post('/clientes', clientesController.crearCliente);
 app.get('/clientes/:id', clientesController.obtenerClientePorId);
-app.put('/modificarCliente', clientesController.actualizarCliente);
-app.delete('/eliminarCliente', clientesController.eliminarCliente);
+app.put('/clientes/:id', clientesController.actualizarCliente);
+app.delete('/clientes/:id', clientesController.eliminarCliente);
 
 // VENTAS
 app.get('/ventas', ventasController.listarVentas);

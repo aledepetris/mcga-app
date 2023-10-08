@@ -39,7 +39,8 @@ module.exports = {
     },
 
     actualizarCliente: function (req, res) { 
-      const { id, nombre, apellido, email } = req.body;
+      const { nombre, apellido, email } = req.body;
+      const { id } = req.params;
       
       if (!id || !nombre || !apellido || !email) {
         return res.status(400).json({ error: 'Error al modificar cliente: campos incompletos' });
@@ -67,7 +68,7 @@ module.exports = {
     },
 
     eliminarCliente: function (req, res) { 
-      const { id } = req.body;        
+      const { id } = req.params;    
 
       if (!id) {
         return res.status(400).json({ error: 'Error al eliminar cliente: no se encuentra el ID' });
